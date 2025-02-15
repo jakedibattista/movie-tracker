@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/movie-tracker/static/css/main.ec3bf5a8.css",
+    "main.css": "/movie-tracker/static/css/main.c9858870.css",
     "main.js": "/movie-tracker/static/js/main.496519ea.js",
     "index.html": "/movie-tracker/index.html",
-    "main.ec3bf5a8.css.map": "/movie-tracker/static/css/main.ec3bf5a8.css.map",
+    "main.c9858870.css.map": "/movie-tracker/static/css/main.c9858870.css.map",
     "main.496519ea.js.map": "/movie-tracker/static/js/main.496519ea.js.map"
   },
   "entrypoints": [
-    "static/css/main.ec3bf5a8.css",
+    "static/css/main.c9858870.css",
     "static/js/main.496519ea.js"
   ]
 }
