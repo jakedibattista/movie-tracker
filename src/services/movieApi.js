@@ -2,8 +2,15 @@ import axios from 'axios';
 
 // Use the API key directly for now
 const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-console.log('API Key in use:', API_KEY, typeof API_KEY);
+console.log('API Key length:', API_KEY?.length); // Check the length
+console.log('API Key first 5 chars:', API_KEY?.substring(0, 5)); // Check the start
+console.log('API Key last 5 chars:', API_KEY?.substring(API_KEY.length - 5)); // Check the end
+
 const BASE_URL = 'https://api.themoviedb.org/3';
+
+// Add axios default config
+axios.defaults.params = {};
+axios.defaults.params['api_key'] = API_KEY;
 
 // Get current date and one year ago
 const currentDate = new Date();
@@ -28,9 +35,17 @@ console.log('Test URL:', testUrl);
 
 export const getPopularMovies = async (page = 1, sortBy = 'popularity') => {
   try {
-    const response = await axios.get(
-      `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortOptions[sortBy]}&page=${page}&primary_release_date.gte=${formatDate(oneYearAgo)}&primary_release_date.lte=${formatDate(currentDate)}&region=US&with_release_type=2|3`
-    );
+    const response = await axios.get(`${BASE_URL}/discover/movie`, {
+      params: {
+        language: 'en-US',
+        sort_by: sortOptions[sortBy],
+        page: page,
+        primary_release_date_gte: formatDate(oneYearAgo),
+        primary_release_date_lte: formatDate(currentDate),
+        region: 'US',
+        with_release_type: '2|3'
+      }
+    });
     console.log('API Response:', response.data);
     return response.data;
   } catch (error) {
