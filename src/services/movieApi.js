@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Use the API key directly for now
 const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-console.log('API Key:', API_KEY);
+console.log('API Key in use:', API_KEY);
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 // Get current date and one year ago
@@ -27,10 +27,10 @@ export const getPopularMovies = async (page = 1, sortBy = 'popularity') => {
     const response = await axios.get(
       `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortOptions[sortBy]}&page=${page}&primary_release_date.gte=${formatDate(oneYearAgo)}&primary_release_date.lte=${formatDate(currentDate)}&region=US&with_release_type=2|3`
     );
-    console.log('Recent movies response:', response.data);
+    console.log('API Response:', response.data);
     return response.data;
   } catch (error) {
-    console.error('Error fetching recent movies:', error);
+    console.error('Error details:', error.response || error);
     return { results: [], total_pages: 0 };
   }
 };
