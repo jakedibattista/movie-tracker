@@ -1,9 +1,9 @@
 {
-  "short_name": "Movie Tracker",
-  "name": "Movie Tracker App",
+  "short_name": "MovieTracker",
+  "name": "MovieTracker",
   "icons": [
     {
-      "src": "./favicon.ico",
+      "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
