@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Use the API key directly for now
 const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-console.log('API Key in use:', API_KEY);
+console.log('API Key in use:', API_KEY, typeof API_KEY);
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 // Get current date and one year ago
@@ -21,6 +21,10 @@ const sortOptions = {
   release: 'primary_release_date.desc',
   rating: 'vote_average.desc'
 };
+
+// Test the full URL being generated
+const testUrl = `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+console.log('Test URL:', testUrl);
 
 export const getPopularMovies = async (page = 1, sortBy = 'popularity') => {
   try {
