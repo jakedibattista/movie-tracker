@@ -2,6 +2,10 @@
 
 A React-based web application for discovering, tracking, and rating movies. Built with React, Tailwind CSS, and the TMDB API.
 
+## Live Demo
+
+Visit the live application at: [MovieTracker on Vercel](https://movie-tracker-flax.vercel.app/)
+
 ## Features
 
 - **Browse Movies**: Discover the latest movies with infinite scroll
@@ -19,6 +23,7 @@ A React-based web application for discovering, tracking, and rating movies. Buil
 - Heroicons
 - TMDB API
 - Local Storage for data persistence
+- Vercel for hosting
 
 ## Getting Started
 
@@ -33,7 +38,7 @@ A React-based web application for discovering, tracking, and rating movies. Buil
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/MovieTracker.git
+git clone https://github.com/jakedibattista/MovieTracker.git
 cd MovieTracker
 ```
 

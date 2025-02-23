@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 // Use the API key directly for now
-const API_KEY = '677630089fd89afad4a3ab08fe3c6cea';
+const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+console.log('API Key:', API_KEY);
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 // Get current date and one year ago

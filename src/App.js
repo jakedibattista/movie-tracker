@@ -11,10 +11,7 @@ function App() {
   return (
     <RatingsProvider>
       <WatchlistProvider>
-        <Router future={{ 
-          v7_startTransition: true,
-          v7_relativeSplatPath: true 
-        }}>
+        <Router>
           <div className="min-h-screen bg-gray-100">
             <Navbar />
             <div className="container mx-auto px-4 py-6 max-w-7xl">
