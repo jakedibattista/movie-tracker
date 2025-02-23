@@ -16,14 +16,14 @@ function RatingStars({ rating, onRate, size = "small", readonly = false }) {
           {star <= (rating || 0) ? (
             <StarSolid 
               className={`${
-                size === "small" ? "h-4 w-4" : "h-6 w-6"
-              } text-yellow-500`}
+                size === "small" ? "h-4 w-4" : "h-5 w-5"
+              } text-yellow-400`}
             />
           ) : (
             <StarOutline 
               className={`${
-                size === "small" ? "h-4 w-4" : "h-6 w-6"
-              } text-gray-400`}
+                size === "small" ? "h-4 w-4" : "h-5 w-5"
+              } text-gray-300`}
             />
           )}
         </button>

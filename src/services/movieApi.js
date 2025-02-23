@@ -1,28 +1,32 @@
 import axios from 'axios';
 
-const API_KEY = process.env.REACT_APP_TMDB_API_KEY || '677630089fd89afad4a3ab08fe3c6cea';
-console.log('API Key loaded:', API_KEY);
+// Use the API key directly for now
+const API_KEY = '677630089fd89afad4a3ab08fe3c6cea';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-export const getPopularMovies = async () => {
+export const getPopularMovies = async (page = 1) => {
   try {
-    const response = await axios.get(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
-    return response.data.results;
+    const response = await axios.get(
+      `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}&region=US`
+    );
+    console.log('Popular movies response:', response.data); // For debugging
+    return response.data;
   } catch (error) {
     console.error('Error fetching popular movies:', error);
-    return [];
+    return { results: [], total_pages: 0 };
   }
 };
 
-export const searchMovies = async (query) => {
+export const searchMovies = async (query, page = 1) => {
   try {
     const response = await axios.get(
-      `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1`
+      `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&region=US`
     );
-    return response.data.results;
+    console.log('Search movies response:', response.data); // For debugging
+    return response.data;
   } catch (error) {
     console.error('Error searching movies:', error);
-    return [];
+    return { results: [], total_pages: 0 };
   }
 };
 
