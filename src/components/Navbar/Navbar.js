@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { HomeIcon, BookmarkIcon } from '@heroicons/react/24/outline';
+import { HomeIcon, BookmarkIcon, StarIcon } from '@heroicons/react/24/outline';
 
 function Navbar() {
   const location = useLocation();
@@ -36,6 +36,17 @@ function Navbar() {
             >
               <BookmarkIcon className="h-4 w-4 mr-2" />
               Watchlist
+            </Link>
+            <Link 
+              to="/ratings" 
+              className={`flex items-center px-3 py-2 rounded-md text-sm font-medium ${
+                location.pathname === '/ratings' 
+                  ? 'bg-gray-900 text-white' 
+                  : 'text-gray-500 hover:bg-gray-100'
+              }`}
+            >
+              <StarIcon className="h-4 w-4 mr-2" />
+              My Ratings
             </Link>
           </div>
         </div>

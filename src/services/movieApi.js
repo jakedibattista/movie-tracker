@@ -4,25 +4,43 @@ import axios from 'axios';
 const API_KEY = '677630089fd89afad4a3ab08fe3c6cea';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-export const getPopularMovies = async (page = 1) => {
+// Get current date and one year ago
+const currentDate = new Date();
+const oneYearAgo = new Date();
+oneYearAgo.setFullYear(currentDate.getFullYear() - 1);
+
+// Format dates for API (YYYY-MM-DD)
+const formatDate = (date) => {
+  return date.toISOString().split('T')[0];
+};
+
+// Add sort parameter to the API call
+const sortOptions = {
+  popularity: 'popularity.desc',
+  release: 'primary_release_date.desc',
+  rating: 'vote_average.desc'
+};
+
+export const getPopularMovies = async (page = 1, sortBy = 'popularity') => {
   try {
     const response = await axios.get(
-      `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}&region=US`
+      `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortOptions[sortBy]}&page=${page}&primary_release_date.gte=${formatDate(oneYearAgo)}&primary_release_date.lte=${formatDate(currentDate)}&region=US&with_release_type=2|3`
     );
-    console.log('Popular movies response:', response.data); // For debugging
+    console.log('Recent movies response:', response.data);
     return response.data;
   } catch (error) {
-    console.error('Error fetching popular movies:', error);
+    console.error('Error fetching recent movies:', error);
     return { results: [], total_pages: 0 };
   }
 };
 
 export const searchMovies = async (query, page = 1) => {
   try {
+    // Also add date filtering to search
     const response = await axios.get(
-      `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&region=US`
+      `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&primary_release_date.gte=${formatDate(oneYearAgo)}&primary_release_date.lte=${formatDate(currentDate)}&region=US`
     );
-    console.log('Search movies response:', response.data); // For debugging
+    console.log('Search movies response:', response.data);
     return response.data;
   } catch (error) {
     console.error('Error searching movies:', error);

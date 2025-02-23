@@ -15,6 +15,7 @@ function Home() {
   const searchTimeoutRef = useRef(null);
   const observerRef = useRef(null);
   const loadingRef = useRef(null);
+  const [yearFilter, setYearFilter] = useState('1'); // '1' for one year, '2' for two years, etc.
 
   // Fetch genres once on component mount
   useEffect(() => {
@@ -149,6 +150,20 @@ function Home() {
             </button>
           ))}
         </div>
+      </div>
+
+      {/* Year Filter */}
+      <div className="mb-8">
+        <select
+          value={yearFilter}
+          onChange={(e) => setYearFilter(e.target.value)}
+          className="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
+        >
+          <option value="1">Past Year</option>
+          <option value="2">Past 2 Years</option>
+          <option value="5">Past 5 Years</option>
+          <option value="all">All Time</option>
+        </select>
       </div>
 
       {/* Title */}

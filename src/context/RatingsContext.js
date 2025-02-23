@@ -13,10 +13,17 @@ export function RatingsProvider({ children }) {
   }, [ratings]);
 
   const rateMovie = (movieId, rating) => {
-    setRatings(prev => ({
-      ...prev,
-      [movieId]: rating
-    }));
+    setRatings(prev => {
+      const newRatings = { ...prev };
+      if (rating === null) {
+        // Remove the rating if null
+        delete newRatings[movieId];
+      } else {
+        // Set the new rating
+        newRatings[movieId] = rating;
+      }
+      return newRatings;
+    });
   };
 
   const getUserRating = (movieId) => {
